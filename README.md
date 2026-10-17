@@ -11,7 +11,7 @@
 ![Gradle](https://img.shields.io/badge/Gradle-8.9-02303A?logo=gradle&logoColor=white)
 ![AGP](https://img.shields.io/badge/AGP-8.5.2-3DDC84)
 ![Build](https://img.shields.io/badge/build-GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
-![Versi](https://img.shields.io/badge/versi-2.0-17636B)
+![Versi](https://img.shields.io/badge/versi-2.1-17636B)
 ![Bahasa](https://img.shields.io/badge/bahasa-Indonesia-red)
 
 [✨ Fitur](#-fitur) • [🚀 Mulai Cepat](#-mulai-cepat) • [📖 Cara Pakai](#-cara-pakai) • [🏗️ Arsitektur](#️-arsitektur) • [🛠️ Build](#️-build-lewat-github-actions) • [❓ FAQ](#-faq) • [🩺 Pemecahan Masalah](#-pemecahan-masalah)
