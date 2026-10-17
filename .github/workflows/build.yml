@@ -1,12 +1,22 @@
 name: Build APK
 on:
   push:
+    paths:
+      - project.zip
+      - .github/workflows/build.yml
   workflow_dispatch:
+permissions:
+  contents: write
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Pakai kunci debug yang sama di setiap build
+        uses: actions/cache@v4
+        with:
+          path: ~/.android/debug.keystore
+          key: debug-keystore-v1
       - name: Ekstrak project.zip
         run: unzip -o project.zip -d proj
       - uses: actions/setup-java@v4
@@ -19,8 +29,14 @@ jobs:
       - name: Build
         working-directory: proj
         run: gradle assembleDebug --no-daemon
+      - name: Siapkan APK
+        run: cp proj/app/build/outputs/apk/debug/app-debug.apk PindahGPS.apk
+      - name: Terbitkan di Releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: gh release create "build-${{ github.run_number }}" PindahGPS.apk --title "Build ${{ github.run_number }}" --notes "APK Pindah GPS"
       - uses: actions/upload-artifact@v4
         with:
-          name: FakeGPS-apk
-          path: proj/app/build/outputs/apk/debug/app-debug.apk
-          
+          name: PindahGPS-apk
+          path: PindahGPS.apk
